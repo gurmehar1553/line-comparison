@@ -10,7 +10,20 @@ public class LineComparison{
 		x2 = sc.nextInt();
 		y2 = sc.nextInt();
 
-		double length = Math.sqrt((x2-x1)*(x2-x1) + (y2-y1)*(y2-y1));
-		System.out.println("Length of line : "+length);
+		double length1 = Math.sqrt((x2-x1)*(x2-x1) + (y2-y1)*(y2-y1));
+		System.out.println("Length of line : "+length1);
+
+		int a1=sc.nextInt();
+		int b1=sc.nextInt();
+		int a2=sc.nextInt();
+		int b2=sc.nextInt();
+		double length2 = Math.sqrt((a2-a1)*(a2-a1) + (b2-b1)*(b2-b1));
+		
+		if(length1 == length2){
+			System.out.println("Two lines are equal");
+		}else{
+			System.out.println("Two lines are not equal");
+		}
+		
 	}
 }
