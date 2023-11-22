@@ -24,6 +24,17 @@ public class LineComparison{
 		}else{
 			System.out.println("Two lines are not equal");
 		}
+
+		int ans = Double.compare(length1,length2);
+		if(ans == 0){
+			System.out.println("Two lines are equal");
+		}
+		else if(ans<0){
+			System.out.println("Line2 is greater");
+		}
+		else{
+			System.out.println("Line1 is greater");
+		}
 		
 	}
 }
