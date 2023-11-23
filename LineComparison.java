@@ -1,46 +1,69 @@
 import java.util.*;
 
+
+
 public class LineComparison{
 
-	public static double findLength(int x1,int y1,int x2,int y2){
-		double length = Math.sqrt((x2-x1)*(x2-x1) + (y2-y1)*(y2-y1));
-		System.out.println("Length of line : "+length);
-		return length;
-	}
+	
 	
 	public static void main(String[] args){
 
 		Scanner sc = new Scanner(System.in);
 		int x1,y1,x2,y2;
+		System.out.println("Input 2 points of first line");
+
 		x1 = sc.nextInt();
 		y1 = sc.nextInt();
 		x2 = sc.nextInt();
 		y2 = sc.nextInt();
 
-		double length1 = findLength(x1,y1,x2,y2);
+		Line l1 = new Line(x1,y1,x2,y2);
+		System.out.println("Input 2 points of second line");
 
 		int a1=sc.nextInt();
 		int b1=sc.nextInt();
 		int a2=sc.nextInt();
 		int b2=sc.nextInt();
-		double length2 = findLength(a1,b1,a2,b2);
+		Line l2 = new Line(a1,b1,a2,b2);
 		
-		if(length1 == length2){
-			System.out.println("Two lines are equal");
-		}else{
-			System.out.println("Two lines are not equal");
-		}
+		Line.checkEquality(l1,l2);
+		Line.compare(l1,l2);
+		
+	}
+}
 
-		int ans = Double.compare(length1,length2);
-		if(ans == 0){
-			System.out.println("Two lines are equal");
+
+class Line{
+	
+	int x1,y1,x2,y2;
+
+	Line(int x1,int y1,int x2,int y2){
+		this.x1 = x1;
+		this.y1 = y1;
+		this.x2 = x2;
+		this.y2 = y2;
+	}
+	
+	public static double findLength(Line l){
+		double length = Math.sqrt(Math.pow(l.x2-l.x1,2) + Math.pow(l.y2-l.y1,2));
+		System.out.println("Length of line : "+length);
+		return length;
+	}
+
+	public static boolean checkEquality(Line l1,Line l2){
+		return findLength(l1) == findLength(l2);
+	}
+
+	public static void compare(Line l1,Line l2){
+		double res = Double.compare(findLength(l1),findLength(l2));
+		if(res == 0){
+			System.out.println("Two Lines are Equal");
 		}
-		else if(ans<0){
-			System.out.println("Line2 is greater");
+		else if(res > 0){
+			System.out.println("Line 1 is greater");
 		}
 		else{
-			System.out.println("Line1 is greater");
+			System.out.println("Line 2 is greater");
 		}
-		
 	}
 }
